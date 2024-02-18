@@ -5,11 +5,13 @@ import ShowPreferences from './features/game/ShowPreferences';
 import CreateGame from './features/game/CreateGame';
 import { loader as preferencesLoader } from './features/game/ShowPreferences';
 import { Toaster } from 'react-hot-toast';
+import ErrorPage from './ui/Error';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <HomeLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: '/',

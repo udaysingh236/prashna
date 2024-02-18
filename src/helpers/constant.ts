@@ -150,4 +150,9 @@ export const questionType: ISelectProps = {
 
 export const routeNames = {
   showPreferences: '/showPreferences',
+  home: '/',
+  startGame: '/startGame',
 };
+
+export const POINTS_PER_QUESTION = 10;
+export const SCORE_CARD_ID = 'score-card';

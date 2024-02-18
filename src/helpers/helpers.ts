@@ -65,4 +65,8 @@ export function prepareQuestions(questions: IQuestions[]): IPreparedQuestions[] 
   return preparedQuestions;
 }
 
+export function checkResult(points: number, totalPoints: number): boolean {
+  return (points / totalPoints) * 100 >= 50 ? true : false;
+}
+
 export default createApiUrl;

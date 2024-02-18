@@ -7,7 +7,7 @@ function HomeLayout() {
   return isLoading ? (
     <Loader />
   ) : (
-    <div className="mx-auto flex  h-dvh max-w-md flex-col items-center justify-between overflow-scroll bg-black-700">
+    <div className="mx-auto h-dvh max-w-md flex-col items-center justify-between overflow-scroll bg-black-800">
       <Outlet />
     </div>
   );

@@ -8,12 +8,13 @@ import List from '../../ui/List';
 import Button from '../../ui/Button';
 import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md';
 import { insertSecondsRemaining } from '../timer/TimerSlice';
-import { MINS_PER_QUESTION, SECS_PER_QUESTION } from '../../helpers/constant';
+import { MINS_PER_QUESTION, SECS_PER_QUESTION, routeNames } from '../../helpers/constant';
 import { insertQuestions, startGame } from './gameSlice';
 import toast from 'react-hot-toast';
 import getQuestions from '../../services/apiGetQuestions';
 import { IQuestionsApiResponse } from '../../types';
 import store from '../../store';
+import { clearState } from '../score/ScoreSlice';
 
 function ShowPreferences() {
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ function ShowPreferences() {
   const navigation = useNavigation();
   const isLoading = navigation.state === 'loading';
   const { userName, questionPreferences, apiUrl } = useAppSelector((state) => state.game);
+
   if (!apiUrl) {
     return <Navigate to="/" />;
   }
@@ -30,7 +32,7 @@ function ShowPreferences() {
     toast.error(
       'Sorry..!! I do not have questions for these preferences, Kindly try with others 🙏',
     );
-    return <Navigate to="/" />;
+    return <Navigate to={routeNames.home} />;
   }
   return isLoading ? (
     <Loader />
@@ -82,7 +84,7 @@ function ShowPreferences() {
           </List>
           <List>You will get a score card in the end.</List>
           <List>
-            You need to score <span className="font-bold text-carrot-orange-300">30%</span>to pass
+            You need to score <span className="font-bold text-carrot-orange-300">50%</span>to pass
             the game.
           </List>
           <List>You can download score card, to show off.</List>
@@ -104,7 +106,8 @@ function ShowPreferences() {
               insertSecondsRemaining(parseInt(questionPreferences.numOfQues) * SECS_PER_QUESTION),
             );
             dispatch(insertQuestions(questions));
-            navigate('/startGame');
+            dispatch(clearState());
+            navigate(routeNames.startGame);
           }}
         >
           Start <MdArrowForwardIos />

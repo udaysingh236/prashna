@@ -5,6 +5,7 @@ import Progress from '../../ui/Progress';
 import Question from './Question';
 import Timer from '../timer/Timer';
 import { finishGame } from './gameSlice';
+import { insertTotalQuestions } from '../score/ScoreSlice';
 
 interface IStartGameProps {
   questions: IPreparedQuestions[];
@@ -14,6 +15,7 @@ function StartGame({ questions }: IStartGameProps) {
   const { userName } = useAppSelector((state) => state.game);
   const { questionIndex } = useAppSelector((state) => state.score);
   const dispatch = useAppDispatch();
+  dispatch(insertTotalQuestions(questions.length));
   function handleGameSubmit() {
     dispatch(finishGame());
   }

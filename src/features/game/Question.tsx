@@ -37,6 +37,12 @@ function Question({ questions }: IQuestionProps) {
               toast.error(`Please select on answer. 🧐`);
               return;
             }
+            setSelected(0);
+            if (isCorrectAnswer) {
+              dispatch(increasePointsAndIndex());
+            } else {
+              dispatch(increaseIndex());
+            }
             dispatch(finishGame());
           }}
         >
