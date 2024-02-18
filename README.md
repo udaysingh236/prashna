@@ -1,30 +1,46 @@
-# React + TypeScript + Vite
+# Prashna - Do you think you know ?
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### A quiz game on different categories, level and types 🚀
 
-Currently, two official plugins are available:
+### This app uses Open Trivia Database API to fetch the questions.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### API - https://opentdb.com/api_config.php
 
-## Expanding the ESLint configuration
+#### Optimized for all modern mobile phones.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Live App: https://mykarya.netlify.app/
 
-- Configure the top-level `parserOptions` property like this:
+### Features:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+- Choose from different categories like General Knowledge, Entertainment: Books etc.
+- Different level of difficulty - Easy, Medium and Hard.
+- Different Types - Multiple Choice, True / False.
+- Timer once the quiz starts.
+- Get a score card to download in the end.
+- You can download score card, to show off.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Technology stack:
+
+- [React](https://react.dev/) - FrontEnd
+
+  - [React Router 6.4](https://reactrouter.com/en/main)
+  - [Redux Toolkit](https://redux-toolkit.js.org/)
+  - [Tailwind CSS](https://tailwindcss.com/)
+
+- [Netlify](https://www.netlify.com/) - Hosting and Deployment
+
+### Some visuals
+
+![Prashna Screenshots](https://github.com/udaysingh236/prashna/blob/main/public/prashna.png)
+
+### Contributing
+
+I love your inputs! and I want to make your contribution to this project easy and transparent, whether it's:
+
+- Reporting a bug
+- Discussing the current state of the code
+- Submitting a fix
+- Proposing new features
+- Feel free to raise a pull request
+
+Made in INDIA
