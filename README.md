@@ -8,7 +8,7 @@
 
 #### Optimized for all modern mobile phones.
 
-### Live App: https://mykarya.netlify.app/
+### Live App: https://prashna.netlify.app/
 
 ### Features:
 
