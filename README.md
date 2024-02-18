@@ -31,7 +31,7 @@
 
 ### Some visuals
 
-![Prashna Screenshots](https://github.com/udaysingh236/prashna/blob/main/public/prashna.png)
+![Prashna Screenshots](https://github.com/udaysingh236/prashna/blob/main/public/prashna-1.png)
 
 ### Contributing
 
