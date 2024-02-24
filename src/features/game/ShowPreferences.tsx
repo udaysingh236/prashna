@@ -15,13 +15,16 @@ import getQuestions from '../../services/apiGetQuestions';
 import { IQuestionsApiResponse } from '../../types';
 import store from '../../store';
 import { clearState } from '../score/ScoreSlice';
+import { useState } from 'react';
+import Modal from '../../ui/Modal';
 
 function ShowPreferences() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const navigation = useNavigation();
   const isLoading = navigation.state === 'loading';
-  const { userName, questionPreferences, apiUrl } = useAppSelector((state) => state.game);
+  const { userName, questionPreferences, apiUrl, status } = useAppSelector((state) => state.game);
+  const [openModal, setOpenModal] = useState(false);
 
   if (!apiUrl) {
     return <Navigate to="/" />;
@@ -33,6 +36,10 @@ function ShowPreferences() {
       'Sorry..!! I do not have questions for these preferences, Kindly try with others 🙏',
     );
     return <Navigate to={routeNames.home} />;
+  }
+
+  if (status === 'active') {
+    return <Navigate to={routeNames.startGame} />;
   }
   return isLoading ? (
     <Loader />
@@ -101,17 +108,37 @@ function ShowPreferences() {
           type="Primary"
           isSubmit={false}
           onClick={() => {
-            dispatch(startGame());
-            dispatch(
-              insertSecondsRemaining(parseInt(questionPreferences.numOfQues) * SECS_PER_QUESTION),
-            );
-            dispatch(insertQuestions(questions));
-            dispatch(clearState());
-            navigate(routeNames.startGame);
+            setOpenModal(true);
           }}
         >
           Start <MdArrowForwardIos />
         </Button>
+        <Modal showModal={openModal} setShowModal={setOpenModal}>
+          <div className="flex flex-col items-center justify-center gap-5 text-lg">
+            <p>Are you sure you want to start ?</p>
+            <div className="flex w-full items-center justify-around gap-5">
+              <Button type="Secondary" isSubmit={false} onClick={() => setOpenModal(false)}>
+                NO
+              </Button>
+              <Button
+                type="Primary"
+                isSubmit={false}
+                onClick={() => {
+                  dispatch(
+                    insertSecondsRemaining(
+                      parseInt(questionPreferences.numOfQues) * SECS_PER_QUESTION,
+                    ),
+                  );
+                  dispatch(insertQuestions(questions));
+                  dispatch(clearState());
+                  dispatch(startGame());
+                }}
+              >
+                Start
+              </Button>
+            </div>
+          </div>
+        </Modal>
       </div>
     </div>
   );

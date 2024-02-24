@@ -6,6 +6,8 @@ import Question from './Question';
 import Timer from '../timer/Timer';
 import { finishGame } from './gameSlice';
 import { insertTotalQuestions } from '../score/ScoreSlice';
+import Modal from '../../ui/Modal';
+import { useState } from 'react';
 
 interface IStartGameProps {
   questions: IPreparedQuestions[];
@@ -14,6 +16,7 @@ interface IStartGameProps {
 function StartGame({ questions }: IStartGameProps) {
   const { userName } = useAppSelector((state) => state.game);
   const { questionIndex } = useAppSelector((state) => state.score);
+  const [openModal, setOpenModal] = useState(false);
   const dispatch = useAppDispatch();
   dispatch(insertTotalQuestions(questions.length));
   function handleGameSubmit() {
@@ -29,7 +32,13 @@ function StartGame({ questions }: IStartGameProps) {
           <Timer />
         </div>
         <div className="ml-auto">
-          <Button type="Secondary" isSubmit={false} onClick={handleGameSubmit}>
+          <Button
+            type="Secondary"
+            isSubmit={false}
+            onClick={() => {
+              setOpenModal(true);
+            }}
+          >
             Submit
           </Button>
         </div>
@@ -41,9 +50,22 @@ function StartGame({ questions }: IStartGameProps) {
           </Progress>
         </div>
         <div>
-          <Question questions={questions} />
+          <Question questions={questions} dispatch={dispatch} />
         </div>
       </main>
+      <Modal showModal={openModal} setShowModal={setOpenModal}>
+        <div className="flex flex-col items-center justify-center gap-5 text-lg">
+          <p>Are you sure you want to submit the quiz ?</p>
+          <div className="flex w-full items-center justify-around gap-5">
+            <Button type="Secondary" isSubmit={false} onClick={() => setOpenModal(false)}>
+              NO
+            </Button>
+            <Button type="Primary" isSubmit={false} onClick={handleGameSubmit}>
+              Submit
+            </Button>
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 }

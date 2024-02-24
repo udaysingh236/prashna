@@ -8,12 +8,12 @@ import { useAppSelector } from '../../hooks';
 
 function ScoreCard() {
   const {
-    game: {
-      userName,
-      questionPreferences: { questionsCategory, questionDifficulty },
-    },
-    score: { totalQuestions, correctAnswered, points, questionIndex },
-  } = useAppSelector((state) => state);
+    userName,
+    questionPreferences: { questionsCategory, questionDifficulty },
+  } = useAppSelector((state) => state.game);
+  const { totalQuestions, correctAnswered, points, questionIndex } = useAppSelector(
+    (state) => state.score,
+  );
   const isPassed = checkResult(points, totalQuestions * POINTS_PER_QUESTION);
   return (
     <div className="w-full py-2 pb-8" id="score-card">

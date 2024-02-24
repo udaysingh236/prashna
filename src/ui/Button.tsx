@@ -24,7 +24,7 @@ function Button({ type, children, isSubmit, onClick, disabled, isActive }: Butto
     return (
       <button
         type="button"
-        className="w-full rounded-xl bg-carrot-orange-900 px-2 py-1 text-center text-xl font-semibold text-persian-red-200 shadow-md shadow-chateau-green-950"
+        className="w-full rounded-xl bg-carrot-orange-900 px-2 py-1 text-center text-xl font-semibold text-persian-red-200 shadow-md shadow-chateau-green-950 hover:bg-carrot-orange-600"
         onClick={onClick}
         disabled={disabled}
       >
