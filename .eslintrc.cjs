@@ -2,8 +2,12 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
+    'jest/globals': true,
   },
-  extends: ['plugin:react/recommended', 'plugin:@typescript-eslint/recommended'],
+  extends: [
+    'plugin:react/recommended',
+    'plugin:@typescript-eslint/recommended, plugin:jest/recommended',
+  ],
   overrides: [
     {
       env: {
@@ -21,7 +25,7 @@ module.exports = {
     sourceType: 'module',
     project: './tsconfig.json',
   },
-  plugins: ['@typescript-eslint', 'react'],
+  plugins: ['@typescript-eslint', 'react', 'jest'],
   rules: {
     'react/react-in-jsx-scope': 0,
     'linebreak-style': 0,

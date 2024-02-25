@@ -37,7 +37,7 @@ function Question({ questions, dispatch }: IQuestionProps) {
           isSubmit={false}
           onClick={() => {
             if (selected === 0) {
-              toast.error(`Please select on answer. 🧐`);
+              toast.error(`Please select one answer. 🧐`);
               return;
             }
             setSelected(0);
@@ -52,7 +52,7 @@ function Question({ questions, dispatch }: IQuestionProps) {
           isSubmit={false}
           onClick={() => {
             if (selected === 0) {
-              toast.error(`Please select on answer. 🧐`);
+              toast.error(`Please select one answer. 🧐`);
               return;
             }
             setSelected(0);
